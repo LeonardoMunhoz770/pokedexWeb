@@ -43,7 +43,39 @@ table {
 }
 
 
+header{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
 
+header h1{
+    font-size: 50px;
+    color: #3E2F71;
+}
+header label{
+    color: #9187B0;
+}
+
+header input{
+    border: none;
+    background-color: #F0F0F1;
+    height: 50%;
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+header div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
 
 .pokemon{
     height: 100%;
