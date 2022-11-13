@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
-    for(let i = 0; i < 100; i++){
+    for(let i = 1; i < 100; i++){
         const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
         fetch(url, {
             method: 'GET'
