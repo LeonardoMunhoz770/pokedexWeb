@@ -30,13 +30,14 @@ document.querySelector("#search").addEventListener("click", function(){
         location.reload()   
     }else{
     for(let i  = 1; i< 101; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=101`
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
         fetch(url, {
             method: "GET"
         }).then(response => response.json())
         .then((response) =>{
             const data = [response]
             if(data[0].name === search){
+                console.log(data[0].id)
                 let htmlPokemon = `
                 <div class="containerPokemon">
                     <figure>
@@ -50,8 +51,20 @@ document.querySelector("#search").addEventListener("click", function(){
                 </div>
                 `
                 document.getElementById("pokedex").innerHTML = htmlPokemon
-            }else{
-                console.log('não encontrei')
+            }if(data[0].id == search){
+                let htmlPokemon = `
+                <div class="containerPokemon">
+                    <figure>
+                        <img src="https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${data[0].id}.svg" alt="">
+                    </figure>
+                    <div class="content" id="content">
+                        <label>#${data[0].id}</label>
+                        <h1>${data[0].name}</h1>
+                        <label>${data[0].types[0].type.name}</label>
+                    </div>
+                </div>
+                `
+                document.getElementById("pokedex").innerHTML = htmlPokemon
             }
         })
         }

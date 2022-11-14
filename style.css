@@ -98,6 +98,7 @@ header div{
     justify-content: center;
     align-content: center;
     place-items: center;
+    margin-top: 20px;
 }
 
 @media(max-width: 1580px){
