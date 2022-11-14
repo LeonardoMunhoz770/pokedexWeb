@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
-    for(let i = 1; i < 100; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
+    for(let i = 1; i < 101; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=101`
         fetch(url, {
             method: 'GET'
         }).then(response => response.json())
@@ -27,18 +27,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 document.querySelector("#search").addEventListener("click", function(){
     let search = document.querySelector("#pokemon").value.toLowerCase();
     if(search.length == 0){
-        location.reload()
-        console.log("ENTREI")
+        location.reload()   
     }else{
-    for(let i  = 1; i< 100; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
+    for(let i  = 1; i< 101; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=101`
         fetch(url, {
             method: "GET"
         }).then(response => response.json())
         .then((response) =>{
             const data = [response]
-            if(data[0].name == search){
-                console.log(data)
+            if(data[0].name === search){
                 let htmlPokemon = `
                 <div class="containerPokemon">
                     <figure>
@@ -52,9 +50,11 @@ document.querySelector("#search").addEventListener("click", function(){
                 </div>
                 `
                 document.getElementById("pokedex").innerHTML = htmlPokemon
+            }else{
+                console.log('não encontrei')
             }
         })
-    }
+        }
     }
     
 })

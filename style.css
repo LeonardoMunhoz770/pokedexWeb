@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    
 }
 ol, ul {
 	list-style: none;
@@ -95,8 +96,8 @@ header div{
     grid-template-columns: repeat(5,1fr);
     align-items: center;
     justify-content: center;
-    padding-left: 55px;
-
+    align-content: center;
+    place-items: center;
 }
 
 @media(max-width: 1580px){
