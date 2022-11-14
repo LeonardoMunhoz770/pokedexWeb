@@ -1,7 +1,12 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+"use strict";
 
-    for(let i = 1; i < 101; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=101`
+
+let loadingPokemon = 101
+
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+    for(let i = 1; i < loadingPokemon; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=${loadingPokemon}`
         fetch(url, {
             method: 'GET'
         }).then(response => response.json())
@@ -29,8 +34,8 @@ document.querySelector("#search").addEventListener("click", function(){
     if(search.length == 0){
         location.reload()   
     }else{
-    for(let i  = 1; i< 101; i++){
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
+    for(let i  = 1; i< loadingPokemon; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=${loadingPokemon}`
         fetch(url, {
             method: "GET"
         }).then(response => response.json())
@@ -70,4 +75,9 @@ document.querySelector("#search").addEventListener("click", function(){
         }
     }
     
+})
+
+
+document.querySelector("#loadingPlus").addEventListener("click", function(){
+    loadingPokemon += 20
 })
