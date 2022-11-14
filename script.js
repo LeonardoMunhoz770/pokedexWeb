@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             method: 'GET'
         }).then(response => response.json())
         .then((response) =>{
-            console.log(response)
             let htmlPokemon = `
             <div class="containerPokemon">
                 <figure>
@@ -25,4 +24,37 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
 ;
 
-
+document.querySelector("#search").addEventListener("click", function(){
+    let search = document.querySelector("#pokemon").value.toLowerCase();
+    if(search.length == 0){
+        location.reload()
+        console.log("ENTREI")
+    }else{
+    for(let i  = 1; i< 100; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}/?limit=100`
+        fetch(url, {
+            method: "GET"
+        }).then(response => response.json())
+        .then((response) =>{
+            const data = [response]
+            if(data[0].name == search){
+                console.log(data)
+                let htmlPokemon = `
+                <div class="containerPokemon">
+                    <figure>
+                        <img src="https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${data[0].id}.svg" alt="">
+                    </figure>
+                    <div class="content" id="content">
+                        <label>#${data[0].id}</label>
+                        <h1>${data[0].name}</h1>
+                        <label>${data[0].types[0].type.name}</label>
+                    </div>
+                </div>
+                `
+                document.getElementById("pokedex").innerHTML = htmlPokemon
+            }
+        })
+    }
+    }
+    
+})
